@@ -1,0 +1,28 @@
+body{
+    margin: 0%;
+}
+header{
+    margin-left: 0%;
+    width: 100%;
+    position: fixed;
+    background-color: cornflowerblue;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    
+}
+#title{
+    text-align: center;
+    width: fit-content;
+    border: 2px solid black;
+    margin: auto;
+    margin-bottom: 2%;
+
+}
+#subtitle{
+    width: fit-content;
+    margin: auto;
+    margin-top: 1%;
+}
