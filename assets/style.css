@@ -1,8 +1,17 @@
 body{
     margin: 0%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1{
+    font-size: 70px;
+}
+p{
+    font-size: 20px;
 }
 header{
     margin-left: 0%;
+    margin-top: 0px;
     width: 100%;
     position: fixed;
     background-color: cornflowerblue;
@@ -16,7 +25,6 @@ header{
 #title{
     text-align: center;
     width: fit-content;
-    border: 2px solid black;
     margin: auto;
     margin-bottom: 2%;
 
@@ -25,4 +33,42 @@ header{
     width: fit-content;
     margin: auto;
     margin-top: 1%;
+}
+main{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    padding-top: 200px;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#quizContent{
+    width: 50%;
+    height: 70%;
+    border: 2px solid black;
+    margin: 4%;
+}
+#timerContent{
+    margin: 4%;
+    width: 30%;
+    height: 50%;
+    border: 2px solid black;
+    font-size: 200px;
+    text-align: center;
+}
+.break{
+    flex-basis: 100%;
+    height: 0%;
+}
+#start{
+    margin-left: auto;
+    margin-right: 5%;
+    margin-top: -15%;
+    width: 30%;
+    height: 10%;
+}
+.invisible{
+    display: none;
 }
