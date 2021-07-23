@@ -70,7 +70,8 @@ main{
     height: 10%;
 }
 .invisible{
-    display: none;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 #submitQuiz{
     margin-right: auto;

@@ -3,6 +3,7 @@ const quizEl = document.getElementById('quizContent')
 const timerEl = document.getElementById('timerContent')
 const startButton = document.getElementById('start')
 const submitButton = document.getElementById('submitQuiz')
+// This variable will give us our questions for the quiz, it is setup as an array with object literals
 const quizSource = [
   {
     question: "Who invented JavaScript?",
@@ -35,8 +36,9 @@ const quizSource = [
 let timer = 11
 submitButton.classList.add('invisible')
 let score = 0
+let didWin = ''
 // Add event listener to start startButton, this will start a function that encloses all of our functions and starts the quiz
-document.getElementById('start').addEventListener('click', function () {
+startButton.addEventListener('click', function () {
   // Declare functions
   buildQuiz()
   function buildQuiz() {
@@ -54,13 +56,12 @@ document.getElementById('start').addEventListener('click', function () {
           // ...add an HTML radio button
           answers.push(
             `<label>
-              <input type="radio" name="question${questionNumber}" value="${letter}">
+              <input type="radio" name="question${questionNumber}" value="${letter}" id="${questionNumber}${letter}">
               ${letter} :
               ${currentQuestion.answers[letter]}
             </label>`
           );
         }
-
         // add this question and its answers to the output
         output.push(
           `<div class="slide">
@@ -87,18 +88,26 @@ document.getElementById('start').addEventListener('click', function () {
   }
   function winGame() {
     alert('YOU WON!')
-    timer += 5
+    timer += 10
     score += 1
     console.log(score)
     nextSlide()
+    didWin = ''
+    startTimer()
   }
-  function checkWin() {
-    var didWin = ""
-    return didWin
-  }
-  function nextSlide() {
-
-  }
+  submitButton.addEventListener('click', function () {
+    var userInput = ''
+    radio = document.getElementsByName('question0')
+     var i = 0
+     for (i = 0; 1 < radio.length; i++){
+       if (radio[i].checked = true){
+         userInput = radio[i].value;
+       }
+     }
+    console.log(radio.value)
+    // console.log(userInput)
+      didWin = ''
+  })
   // additional variables to select slides (allows us to control which question is visible at a given time)
   const slides = document.querySelectorAll(".slide");
   let currentSlide = 0;
@@ -107,12 +116,12 @@ document.getElementById('start').addEventListener('click', function () {
   function startTimer() {
     startButton.classList.add('invisible')
     var set = setInterval(function () {
-      didWin = checkWin()
       if (timer === 0) {
         clearInterval(set)
         gameOver()
       }
       else if (didWin === true) {
+        clearInterval(set)
         winGame()
       }
       else if (didWin === false) {
@@ -124,5 +133,13 @@ document.getElementById('start').addEventListener('click', function () {
         timerEl.innerHTML = (timer)
       }
     }, 1000)
+  }
+  function nextSlide() {
+    if (currentSlide === 2) {
+      gameOver()
+    }
+    slides[currentSlide].classList.remove('activeSlide')
+    currentSlide += 1
+    slides[currentSlide].classList.add('activeSlide')
   }
 })
