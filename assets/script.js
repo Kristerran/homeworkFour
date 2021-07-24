@@ -33,7 +33,7 @@ const quizSource = [
     correctAnswer: "c"
   }
 ];
-let timer = 11
+let timer = 61
 submitButton.classList.add('invisible')
 let score = 0
 let didWin = ''
@@ -77,7 +77,7 @@ startButton.addEventListener('click', function () {
   }
   function gameOver() {
     alert('GAME OVER')
-    timer = 11
+    timer = 61
     timerEl.innerHTML = ""
     startButton.classList.remove('invisible')
   }
@@ -85,15 +85,15 @@ startButton.addEventListener('click', function () {
     alert('wrong answer')
     timer -= 5
     nextSlide()
+    didWin = ''
   }
   function winGame() {
     alert('YOU WON!')
-    timer += 10
+    timer += 5
     score += 1
     console.log(score)
     nextSlide()
     didWin = ''
-    startTimer()
   }
   submitButton.addEventListener('click', function () {
     var userInput = ''
@@ -115,10 +115,15 @@ startButton.addEventListener('click', function () {
     })
   })
   // additional variables to select slides (allows us to control which question is visible at a given time)
+  
   const slides = document.querySelectorAll(".slide");
   let currentSlide = 0;
   slides[currentSlide].classList.add('activeSlide')
+  
+  
   startTimer()
+
+
   function startTimer() {
     startButton.classList.add('invisible')
     var set = setInterval(function () {
@@ -127,11 +132,9 @@ startButton.addEventListener('click', function () {
         gameOver()
       }
       else if (didWin === true) {
-        clearInterval(set)
         winGame()
       }
       else if (didWin === false) {
-        clearInterval(set)
         loseGame()
       }
       else {
@@ -142,7 +145,7 @@ startButton.addEventListener('click', function () {
   }
   function nextSlide() {
     if (currentSlide === 2) {
-      gameOver()
+      timer = 0
     }
     slides[currentSlide].classList.remove('activeSlide')
     currentSlide += 1
