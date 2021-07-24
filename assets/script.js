@@ -56,7 +56,7 @@ startButton.addEventListener('click', function () {
           // ...add an HTML radio button
           answers.push(
             `<label>
-              <input type="radio" name="question${questionNumber}" value="${letter}" id="${questionNumber}${letter}">
+              <input type="radio" class="question${questionNumber}" value="${letter}">
               ${letter} :
               ${currentQuestion.answers[letter]}
             </label>`
@@ -97,16 +97,22 @@ startButton.addEventListener('click', function () {
   }
   submitButton.addEventListener('click', function () {
     var userInput = ''
-    radio = document.getElementsByName('question0')
-     var i = 0
-     for (i = 0; 1 < radio.length; i++){
-       if (radio[i].checked = true){
-         userInput = radio[i].value;
-       }
-     }
-    console.log(radio.value)
-    // console.log(userInput)
-      didWin = ''
+    radio = document.querySelectorAll('.question0')
+    radio.forEach(function(button){
+      if(button.checked){
+
+       userInput = button.value
+
+       console.log(userInput)
+       console.log(quizSource.correctAnswer)
+      }
+      if(userInput === quizSource.correctAnswer){
+        didWin = true
+      }
+      else{
+        didWin = false
+      }
+    })
   })
   // additional variables to select slides (allows us to control which question is visible at a given time)
   const slides = document.querySelectorAll(".slide");
