@@ -56,10 +56,10 @@ const quizSource = [
   {
     question: "What is the HTML tag under which one can write the JavaScript code?",
     answers: {
-      a: "<javascript>",
-      b: "<scripted>",
-      c: "<script>",
-      D: "<js>"
+      a: "Javascript",
+      b: "Scripted",
+      c: "Script",
+      D: "Js"
     },
     correctAnswer: "c"
   },
