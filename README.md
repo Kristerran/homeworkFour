@@ -1,4 +1,4 @@
-# homeworkThree
+# homework Four
 Third homework project for bootcamp! Coding quiz with timer and stored scoring.
 When site is launched user is greeted with instructions and start button as well as their previous high score (0 if first initialization)
 Then when start is pushed, a timer will appear. if the user pushes submit a message will appear momentarily in the timer slot before once again being replaced with a timer.
